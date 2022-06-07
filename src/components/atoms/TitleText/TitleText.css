@@ -1,0 +1,22 @@
+.default {
+    font-size: 13px;
+    color: #5e5c5d;
+    max-width: 100%;
+    margin: 1px 1px 1px 1px;
+}
+
+
+.title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #5e5c5d;
+    margin: 1px 1px 1px 1px;
+    max-width: 100%;
+}
+.description {
+    color: #adadaf;
+    font-size: 14px;
+    max-width: 100%;
+    margin: 1px 1px 1px 1px;
+}
+
