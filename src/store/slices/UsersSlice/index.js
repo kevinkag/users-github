@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { fetchUsers } from '../../../utils/actions';
+import { fetchOtherUser, fetchUsers } from '../../../utils/actions';
 
 const initialState = {
     list: [],
@@ -62,6 +62,10 @@ export const usersList = (state) => state.users.list
 export const userDetails = (state) => state.users.user
 export const searchUsers = (state) => state.users.search
 
+export const setUserInLocate = (login) => async(dispatch) => {
+    const response = await fetchOtherUser(login)
+    dispatch(setDataByKey(response.data))
+}
 
 export const getAllUsers = () => (dispatch) => {
     dispatch(fetchAllUsersAsync(setAllUsers));   

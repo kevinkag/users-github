@@ -9,13 +9,14 @@ import {useStyles} from './searchusersStyles'
 import { fetchOtherUserAsync, otherUser } from '../../../store/slices/UserOtherSlice';
 import { setDataByKey } from '../../../store/slices/UsersSlice';
 import { fetchDataByKey } from '../../../utils/actions';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const SearchUsers = () => {
   
   const classes = useStyles();
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const location = useLocation();
   const listSearch = useSelector(searchUsers)
   const user = useSelector(userDetails)
   const [returnSearch, setReturnSearch] = useState(true)
@@ -23,9 +24,14 @@ const SearchUsers = () => {
   const [noResults, setNoResults] = useState(false)
   const [noResultsTotal, setNoResultsTotal] = useState(false)
 
+
+
+
   const searching = (e) => {
+    
+    
     setReturnSearch(true)
-    setValue(e);
+    setValue(e)
     if(e === ''){
       setNoResults(true)
       setReturnSearch(false)
@@ -42,16 +48,29 @@ const SearchUsers = () => {
   };
  
   const searchOtherUser = async(login, e) => {
+    let locate = location.pathname 
+
     dispatch(setDataByKey(await fetchDataByKey(login)))
     setValue('')
     setNoResults(false)
-    navigate(`/user/${login}`)
+  
+    if (inLocation(locate)) {
+      navigate(`/user/${login}`)
+    }
   }
 
   const validateResults = () => {
     if (!noResults) {
       searchOtherUser(value)
     }
+  }
+
+  const inLocation = (locate) => {
+    let inlocate = false
+     if (locate === `/`){
+      inlocate = true
+    }
+    return inlocate
   }
   
   return (
@@ -61,7 +80,6 @@ const SearchUsers = () => {
       className={classes.input}
       placeholder="Search users"
       value={value}
-      onKeyPress={() => console.log('enter')}
       onChange={(e) => searching(e.target.value)}
     />
     <IconButton type="submit" onClick={(e) => searchOtherUser(value, e)} onChange={() => searchOtherUser(value)} className={classes.iconButton} aria-label="search">
@@ -78,7 +96,9 @@ const SearchUsers = () => {
       {
         listSearch.map((item, key) => (
           (
+            <div key={key}>
             <SearchCardItem item={item} key={key}/>
+            </div>
           )
         ))
       }
