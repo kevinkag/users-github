@@ -9,11 +9,13 @@ const UserList = () => {
   const dispatch = useDispatch()
   const classes = useStyles();
   const list = useSelector(usersList)
-  const handleUsers = () => dispatch(getAllUsers())
-
+ 
+  
   useEffect(() => {
-    handleUsers()
+    dispatch(getAllUsers())
   }, [])
+  
+
 
   return (
     <List className={classes.root}>

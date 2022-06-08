@@ -4,10 +4,6 @@ import { store } from './store';
 import App from './App';
 import './index.css';
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UserList from './components/organisms/UserList';
-import UserCard from './components/molecules/UserCard';
-
 
 const root =  ReactDOM.createRoot(
   document.getElementById("root")

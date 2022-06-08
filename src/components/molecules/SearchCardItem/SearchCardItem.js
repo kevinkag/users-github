@@ -3,8 +3,7 @@ import {ListItem,ListItemText,ListItemAvatar,Avatar} from '@material-ui/core';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useStyles } from './searchcarditemStyles';
 import { useDispatch } from 'react-redux';
-import { setDataByKey, setUserInLocate } from '../../../store/slices/UsersSlice';
-import { fetchOtherUser } from '../../../utils/actions';
+import { setUserInLocate } from '../../../store/slices/UsersSlice';
 
 const SearchCardItem = ({item}) => {
   const navigate = useNavigate()

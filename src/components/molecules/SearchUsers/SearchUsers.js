@@ -3,10 +3,9 @@ import {Paper,InputBase,IconButton,List,Button,ButtonGroup} from '@material-ui/c
 import SearchIcon from '@material-ui/icons/Search';
 import {isEmpty} from 'lodash'
 import { useDispatch, useSelector } from 'react-redux';
-import { cleanSearch, search, searchUsers, userDetails,} from '../../../store/slices/UsersSlice';
+import { search, searchUsers, userDetails,} from '../../../store/slices/UsersSlice';
 import SearchCardItem from '../SearchCardItem';
 import {useStyles} from './searchusersStyles'
-import { fetchOtherUserAsync, otherUser } from '../../../store/slices/UserOtherSlice';
 import { setDataByKey } from '../../../store/slices/UsersSlice';
 import { fetchDataByKey } from '../../../utils/actions';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -18,18 +17,13 @@ const SearchUsers = () => {
   const navigate = useNavigate()
   const location = useLocation();
   const listSearch = useSelector(searchUsers)
-  const user = useSelector(userDetails)
   const [returnSearch, setReturnSearch] = useState(true)
   const [value, setValue] = useState('')
   const [noResults, setNoResults] = useState(false)
   const [noResultsTotal, setNoResultsTotal] = useState(false)
 
 
-
-
   const searching = (e) => {
-    
-    
     setReturnSearch(true)
     setValue(e)
     if(e === ''){

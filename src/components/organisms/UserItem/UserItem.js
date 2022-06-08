@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Grid, Paper, Button, ButtonGroup, Typography, ButtonBase } from '@material-ui/core';
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import { search, setDataByKey, userDetails } from '../../../store/slices/UsersSlice';
+import { setDataByKey, userDetails } from '../../../store/slices/UsersSlice';
 import { fetchDataByKey } from '../../../utils/actions';
 import { useStyles } from './useritemStyle';
 import Error from '../../pages/Error';
@@ -12,12 +12,16 @@ const UserItem = () => {
   const { login } = useParams();
   const user = useSelector(userDetails)
   const dispatch = useDispatch()
-
+  const handle = async() => {
+    dispatch(setDataByKey(await fetchDataByKey(login)))
+  }
+  
   useEffect(() => {
-    (async () => {
-      dispatch(setDataByKey(await fetchDataByKey(login)))
-    })()
+    handle()
   }, [])
+  
+  
+
 
   return (
     user ?
