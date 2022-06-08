@@ -26,10 +26,9 @@
   },
   "homepage": "/users-github",
   "scripts": {
-    "ci": "yarn install --frozen-lockfile",
     "predeploy": "yarn run build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
