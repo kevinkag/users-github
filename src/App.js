@@ -16,8 +16,8 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/users-github" element={<UsersPrincipal />} />
-            <Route path="user/:login" element={<UserItemTemplate />} />
-            <Route path="error" element={<Error/>}/>
+            <Route path="/users-github/user/:login" element={<UserItemTemplate />} />
+            <Route path="/users-github/error" element={<Error/>}/>
           </Routes>
         </BrowserRouter>
       </Container>

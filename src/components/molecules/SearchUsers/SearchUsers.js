@@ -53,12 +53,6 @@ const SearchUsers = () => {
     }
   }
 
-  const validateResults = () => {
-    if (!noResults) {
-      searchOtherUser(value)
-    }
-  }
-
   const inLocation = (locate) => {
     let inlocate = false
      if (locate === `/users-github`){
