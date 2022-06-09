@@ -24,7 +24,6 @@
     "react-window": "^1.8.7",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "",
   "scripts": {
     "predeploy": "yarn run build",
     "start": "react-scripts start",
