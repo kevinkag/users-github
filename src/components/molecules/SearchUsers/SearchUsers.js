@@ -61,7 +61,7 @@ const SearchUsers = () => {
 
   const inLocation = (locate) => {
     let inlocate = false
-     if (locate === `/`){
+     if (locate === `/users-github`){
       inlocate = true
     }
     return inlocate
