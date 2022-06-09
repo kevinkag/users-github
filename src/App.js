@@ -15,7 +15,7 @@ function App() {
       <Container maxWidth="sm">
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<UsersPrincipal />} />
+            <Route path="/users-github" element={<UsersPrincipal />} />
             <Route path="user/:login" element={<UserItemTemplate />} />
             <Route path="error" element={<Error/>}/>
           </Routes>
