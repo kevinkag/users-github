@@ -42,14 +42,14 @@ const SearchUsers = () => {
   };
  
   const searchOtherUser = async(login, e) => {
-    let locate = location.pathname 
+    let locate = location.pathname
 
     dispatch(setDataByKey(await fetchDataByKey(login)))
     setValue('')
     setNoResults(false)
   
     if (inLocation(locate)) {
-      navigate(`/user/${login}`)
+      navigate(`${locate}/user/${login}`)
     }
   }
 

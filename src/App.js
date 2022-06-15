@@ -7,7 +7,7 @@ import UserItemTemplate from './components/pages/UserItemTemplate';
 import Error from './components/pages/Error';
 
 function App() {
-  console.log('a')
+ 
   return (
     <div style={{backgroundColor:'#ef89b1', height: '100vh', padding: 1}}>
       <React.Fragment>
