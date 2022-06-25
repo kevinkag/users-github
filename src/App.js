@@ -1,28 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import UsersPrincipal from './components/pages/UsersPrincipal';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Container from '@material-ui/core/Container';
-import UserItemTemplate from './components/pages/UserItemTemplate';
-import Error from './components/pages/Error';
+import Search from './components/organisms/Search';
+import './App.css'
+import ListUsers from './components/organisms/ListUsers';
+import UserCard from './components/molecules/UserCard';
+import { useSelector } from 'react-redux';
+import { getMode } from './store/slices/usersSlice';
 
 function App() {
- //test
+  const mode = useSelector(getMode)
+ 
   return (
-    <div style={{backgroundColor:'#ef89b1', height: '100vh', padding: 1}}>
-      <React.Fragment>
-      <CssBaseline/>
-      <Container maxWidth="sm">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/users-github" element={<UsersPrincipal />} />
-            <Route path="/users-github/user/:login" element={<UserItemTemplate />} />
-            <Route path="/users-github/error" element={<Error/>}/>
-          </Routes>
-        </BrowserRouter>
-      </Container>
+    <React.Fragment>
+      <div className='app'>
+        <div style={{ width: 350 }}>
+          <Search />
+          {
+            mode === 'card' ? <UserCard /> : <ListUsers />
+          }
+        </div>
+      </div>
     </React.Fragment>
-    </div>
   );
 }
 
