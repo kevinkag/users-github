@@ -3,8 +3,7 @@ import { fetchUsers } from '../../actions';
 
 const initialState = {
     list: [],
-    user:[],
-    id:'',
+    id: '',
     search: [],
     mode: 'list',
     status: 'idle',
@@ -27,9 +26,6 @@ export const usersSlice = createSlice({
         setMode: (state, action) => {
             state.mode = action.payload
         },
-        setUserById: (state, action) => {
-            state.user = action.payload
-        },
         setId: (state, action) => {
             state.id = action.payload
         },
@@ -40,9 +36,10 @@ export const usersSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(fetchAllUsersAsync.pending, (state) => {
-            state.status = 'pending'
-        })
+        builder
+            .addCase(fetchAllUsersAsync.pending, (state) => {
+                state.status = 'pending'
+            })
             .addCase(fetchAllUsersAsync.rejected, (state, action) => {
                 if (state.status === 'pending') {
                     state.status = 'idle'
@@ -56,11 +53,10 @@ export const usersSlice = createSlice({
     }
 })
 
-export const { setMode, setUserById, setId, search } = usersSlice.actions
+export const { setMode, setId, search } = usersSlice.actions
 
 export const getListUsers = (state) => state.users.list
 export const getMode = (state) => state.users.mode
-export const getUser = (state) => state.users.user
 export const getId = (state) => state.users.id
 export const getStatus = (state) => state.users.status
 
